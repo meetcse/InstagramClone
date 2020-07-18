@@ -41,11 +41,11 @@ public class Notification {
         this.postId = postId;
     }
 
-    public boolean isPost() {
+    public boolean isIsPost() {
         return isPost;
     }
 
-    public void setPost(boolean post) {
+    public void setIsPost(boolean post) {
         isPost = post;
     }
 

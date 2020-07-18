@@ -1,6 +1,7 @@
 package com.example.instagram.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         holder.comment.setText(notification.getText());
 
-        if (notification.isPost()) {
+
+
+        if (notification.isIsPost()) {
             holder.postImage.setVisibility(View.VISIBLE);
 
             getPostImage(holder.postImage, notification.getPostId());
@@ -66,7 +69,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(notification.isPost()) {
+                if(notification.isIsPost()) {
                     mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit().putString("postid", notification.getPostId()).apply();
 
                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PostDetailFragment()).commit();

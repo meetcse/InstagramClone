@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.instagram.Adapter.PhotoAdapter;
 import com.example.instagram.Adapter.PostAdapter;
 import com.example.instagram.EditProfileActivity;
+import com.example.instagram.FollowersActivity;
 import com.example.instagram.Model.Post;
 import com.example.instagram.Model.User;
 import com.example.instagram.R;
@@ -70,7 +71,7 @@ public class ProfileFragment extends Fragment {
     String profileId;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
@@ -174,6 +175,31 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("title", "followers");
+                startActivity(intent);
+
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("title", "followings");
+                startActivity(intent);
+
+            }
+        });
+
+
         return view;
     }
 
@@ -291,12 +317,12 @@ public class ProfileFragment extends Fragment {
     }
 
     private void getFollowersAndFollowingCount() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("follow").child(profileId);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileId);
 
         ref.child("followers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                followers.setText("" + dataSnapshot.getChildrenCount());
+                followers.setText(String.valueOf(dataSnapshot.getChildrenCount()));
             }
 
             @Override
@@ -308,7 +334,7 @@ public class ProfileFragment extends Fragment {
         ref.child("following").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                following.setText("" + snapshot.getChildrenCount());
+                following.setText(String.valueOf(snapshot.getChildrenCount()));
             }
 
             @Override
