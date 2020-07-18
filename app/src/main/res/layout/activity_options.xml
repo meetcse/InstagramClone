@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionsActivity">
+    tools:context=".OptionsActivity"
+    android:orientation="vertical"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        android:id="@+id/toolbar"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings"
+        android:text="@string/settings"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:text="@string/log_out"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        />
+
+
+
+</LinearLayout>

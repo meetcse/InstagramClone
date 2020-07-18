@@ -22,6 +22,7 @@ import com.example.instagram.EditProfileActivity;
 import com.example.instagram.FollowersActivity;
 import com.example.instagram.Model.Post;
 import com.example.instagram.Model.User;
+import com.example.instagram.OptionsActivity;
 import com.example.instagram.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -196,6 +197,13 @@ public class ProfileFragment extends Fragment {
                 intent.putExtra("title", "followings");
                 startActivity(intent);
 
+            }
+        });
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), OptionsActivity.class));
             }
         });
 
